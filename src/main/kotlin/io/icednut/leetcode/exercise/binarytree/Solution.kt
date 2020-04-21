@@ -8,8 +8,8 @@ class Solution {
             node?.left.let {
                 run(it, result)
             }
-            node?.`val`.let {
-                result.add(node?.`val`)
+            node?.`val`?.let {
+                result.add(it)
             }
             if (node?.right != null) {
                 run(node?.right, result)
