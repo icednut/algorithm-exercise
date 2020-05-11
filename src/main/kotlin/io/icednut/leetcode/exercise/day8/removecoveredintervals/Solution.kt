@@ -10,11 +10,11 @@ data class Point(val a: Int, val b: Int) : Comparable<Point> {
             return -1
         } else if (a == other.a) {
             if (b < other.b) {
-                return -1
+                return 1
             } else if (b == other.b) {
                 return 0
             } else {
-                return 1
+                return -1
             }
         } else {
             return 1
@@ -28,8 +28,6 @@ class Solution {
             Point(it[0], it[1])
         }.toSortedSet()
 
-        println("sortedIntervals == ${sortedIntervals}")
-
         var pastInterval: Point? = null
         var intervalCount = sortedIntervals.size
         for (interval in sortedIntervals) {
@@ -37,10 +35,12 @@ class Solution {
                 if (isCovered(pastInterval, interval) || isCovered(interval, pastInterval)) {
                     // covered!!
                     intervalCount -= 1
-                    println("[DELETE] == ${interval}")
+                } else {
+                    pastInterval = interval
                 }
+            } else {
+                pastInterval = interval
             }
-            pastInterval = interval
         }
         return intervalCount
     }

@@ -36,6 +36,6 @@ internal class SolutionTest {
         val givenArray = arrayOf(intArrayOf(66672,75156), intArrayOf(59890,65654), intArrayOf(92950,95965), intArrayOf(9103,31953), intArrayOf(54869,69855), intArrayOf(33272,92693), intArrayOf(52631,65356), intArrayOf(43332,89722), intArrayOf(4218,57729), intArrayOf(20993,92876))
 
         val output = solution.removeCoveredIntervals(givenArray)
-        assertEquals(output, 3)
+        assertEquals(3, output)
     }
 }
