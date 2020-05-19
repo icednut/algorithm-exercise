@@ -49,4 +49,5 @@ internal class SolutionTest {
 
         assertEquals(2, maxProfit)
     }
+
 }
