@@ -59,4 +59,22 @@ internal class SolutionTest {
         assertEquals(5, maxProfit)
     }
 
+    @Test
+    fun `가장 수익이 큰 주식 비용을 계산할 수 있어야 한다7`() {
+        val solution = Solution()
+
+        val maxProfit = solution.maxProfit(intArrayOf(2, 1, 2, 1, 0, 1, 2))
+
+        assertEquals(2, maxProfit)
+    }
+
+    @Test
+    fun `가장 수익이 큰 주식 비용을 계산할 수 있어야 한다8`() {
+        val solution = Solution()
+
+        val maxProfit = solution.maxProfit(intArrayOf(3, 3, 5, 0, 0, 3, 1, 4))
+
+        assertEquals(4, maxProfit)
+    }
+
 }
