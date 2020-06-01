@@ -2,48 +2,41 @@ package io.icednut.leetcode.exercise.day10.longestincreasingsubsequence
 
 class Solution {
     fun lengthOfLIS(nums: IntArray): Int {
-        val cache = Array(nums.size) { "" }
-        for (index in nums.lastIndex downTo 0) {
-            if (cache[index].isBlank()) {
-                cache[index] = "${nums[index]}"
-                lastMinValue(cache, nums, index, index, "")
-            }
+        val cache = Array(nums.size) { listOf<Int>() }
+
+        for (i in 0..nums.lastIndex) {
+            val lis = go(cache[i], nums, i)
+            cache[i] = lis
         }
-        return cache.maxBy { it.split(",").size }?.split(",")?.size ?: 0
+        return cache.maxBy { it.size }?.size ?: 0
     }
 
-    private fun lastMinValue(
-        cache: Array<String>,
-        nums: IntArray,
-        targetIndex: Int,
-        lastIndex: Int,
-        cacheIndex: String
-    ) {
-        val nextMinValuePair = nums
-            .mapIndexed { idx, value ->
-                val newValue = if (value > nums[targetIndex]) -1 else value
-                Pair(idx, newValue)
+    private fun go(lis: List<Int>, nums: IntArray, startIndex: Int): List<Int> {
+        var lastStepValue = if (lis.isNotEmpty()) lis.last() else -1
+        var addIndex = 0
+        var newLis = lis
+
+        for (i in startIndex..nums.lastIndex) {
+            if (nums[i] > lastStepValue) {
+                lastStepValue = nums[i]
+                newLis = newLis + lastStepValue
+                addIndex += 1
             }
-            .filter { it.first < lastIndex }
-            .filter { it.second > 0 }
-            .maxBy { it.second }
-
-        if (nextMinValuePair == null) {
-            return
-        }
-
-        cache[targetIndex] = "${nextMinValuePair.second},${cache[targetIndex]}"
-        var newCacheIndex = cacheIndex
-        if (nextMinValuePair.first != lastIndex) {
-            newCacheIndex += "${nextMinValuePair.first},"
-        }
-        for (index in newCacheIndex.split(",")) {
-            val cacheIdx = if (index.isNotBlank()) index.toInt() else null
-
-            if (cacheIdx != null && !cache[cacheIdx].contains(nextMinValuePair.first.toString())) {
-                cache[cacheIdx] = "${nextMinValuePair.second},${cache[cacheIdx]}"
+            if (nums[i] > nums[startIndex]
+                && lastStepValue > nums[i]
+                && isNewMaxLis(nums, i, newLis)
+            ) {
+                newLis = newLis.filter { it < nums[i] }
+                newLis = newLis + nums[i]
             }
         }
-        lastMinValue(cache, nums, targetIndex, nextMinValuePair.first, newCacheIndex)
+        return newLis
+    }
+
+    private fun isNewMaxLis(nums: IntArray, index: Int, currentLis: List<Int>): Boolean {
+        val newLis = go(currentLis.filter { it < nums[index] }, nums, index)
+        val pastLis = go(currentLis, nums, index)
+
+        return newLis.size >= pastLis.size
     }
 }
