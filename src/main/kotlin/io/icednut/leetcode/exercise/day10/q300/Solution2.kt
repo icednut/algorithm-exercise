@@ -1,4 +1,4 @@
-package io.icednut.leetcode.exercise.day10.longestincreasingsubsequence
+package io.icednut.leetcode.exercise.day10.q300
 
 import kotlin.math.max
 
