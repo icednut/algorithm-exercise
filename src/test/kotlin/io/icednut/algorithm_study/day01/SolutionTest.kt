@@ -1,0 +1,19 @@
+package io.icednut.algorithm_study.day01
+
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
+
+internal class SolutionTest {
+
+    @Test
+    fun test_largestNumber() {
+        val solution = Solution()
+
+        assertEquals("210", solution.largestNumber(intArrayOf(10, 2)))
+        assertEquals("9534330", solution.largestNumber(intArrayOf(3,30,34,5,9)))
+        assertEquals("1", solution.largestNumber(intArrayOf(1)))
+        assertEquals("10", solution.largestNumber(intArrayOf(10)))
+        assertEquals("43243432", solution.largestNumber(intArrayOf(432, 43243)))
+//        assertEquals("0", solution.largestNumber(intArrayOf(0, 0)))
+    }
+}
