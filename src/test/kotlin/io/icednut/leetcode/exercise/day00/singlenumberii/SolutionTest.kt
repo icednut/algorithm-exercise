@@ -11,7 +11,7 @@ internal class SolutionTest {
 
     @Test
     fun `싱글 넘버를 찾을 수 있어야 한다`() {
-        val solution = Solution()
+        val solution = io.icednut.algorithm.exercise.old.exercise.day00.singlenumberii.Solution()
         assertEquals(3, solution.singleNumber(intArrayOf(2, 2, 3, 2)))
     }
 }
