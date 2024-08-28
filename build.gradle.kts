@@ -1,8 +1,8 @@
 plugins {
-    kotlin("jvm") version "1.3.70"
+    kotlin("jvm") version "1.9.23"
 }
 
-group = "io.icednut"
+group = "io.icednut.coding.test"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -10,15 +10,12 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testImplementation(kotlin("test"))
 }
 
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
+tasks.test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(21)
 }
