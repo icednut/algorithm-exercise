@@ -48,4 +48,21 @@ class SolutionTest {
 
         assertEquals(-1, result)
     }
+
+    @Test
+    fun test04() {
+        val solution = Solution()
+
+        val result = solution.shortestPathBinaryMatrix(
+            arrayOf(
+                intArrayOf(0, 0, 0, 0, 1),
+                intArrayOf(1, 0, 0, 0, 0),
+                intArrayOf(0, 1, 0, 1, 0),
+                intArrayOf(0, 0, 0, 1, 1),
+                intArrayOf(0, 0, 0, 1, 0),
+            )
+        )
+
+        assertEquals(-1, result)
+    }
 }
