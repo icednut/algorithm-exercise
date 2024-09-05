@@ -7,6 +7,11 @@ class Solution {
         val red = HashSet<Int>()
         val green = HashSet<Int>()
 
+        val n = 4
+        for (i in n - 1 downTo  0) {
+
+        }
+
         for (vertex in graph.indices) {
             if (!dfs(graph, vertex, seen, red, green, true)) {
                 return false
