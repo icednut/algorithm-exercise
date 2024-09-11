@@ -25,9 +25,11 @@ class Solution {
     fun isSubPath(head: ListNode?, root: TreeNode?): Boolean {
         val history = convert(head)
 
-        val actualHistorySize = dfs(root, history, 0)
-
-        return history.size == actualHistorySize
+        return dfs(
+            root,
+            history,
+            LinkedList<Int>()
+        )
     }
 
     private fun convert(head: ListNode?): LinkedList<Int> {
@@ -47,27 +49,24 @@ class Solution {
         return result
     }
 
-    private fun dfs(root: TreeNode?, history: LinkedList<Int>, i: Int): Int {
-        if (root == null) {
-            return i
-        }
-        if (i >= history.size) {
-            return i
+    private fun dfs(node: TreeNode?, targets: LinkedList<Int>, visited: LinkedList<Int>): Boolean {
+        if (node == null) {
+            return visited.windowed(targets.size).any { it == targets}
         }
 
-        val currentVal = root.`val`
-        val nextIndex = if (history[i] == currentVal) {
-            i + 1
+        if (visited.windowed(targets.size).any { it == targets}) {
+            return true
+        }
+
+        visited.add(node.`val`)
+
+        val leftResult = dfs(node.left, targets, visited.clone() as LinkedList<Int>)
+        val rightResult = dfs(node.right, targets, visited.clone() as LinkedList<Int>)
+
+        return if (leftResult || rightResult) {
+            true
         } else {
-            i
+            false
         }
-
-        val leftResult = dfs(root.left, history, nextIndex)
-        val rightResult = dfs(root.right, history, nextIndex)
-
-        if (leftResult > rightResult) {
-            return leftResult
-        }
-        return rightResult
     }
 }
