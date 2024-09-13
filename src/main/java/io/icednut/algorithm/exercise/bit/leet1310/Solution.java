@@ -1,4 +1,4 @@
-package io.icednut.algorithm.exercise.etc.leet1310;
+package io.icednut.algorithm.exercise.bit.leet1310;
 
 class Solution {
 

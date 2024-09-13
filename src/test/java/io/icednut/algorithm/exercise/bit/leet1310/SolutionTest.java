@@ -1,8 +1,8 @@
-package io.icednut.algorithm.exercise.etc.leet1310;
+package io.icednut.algorithm.exercise.bit.leet1310;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 
