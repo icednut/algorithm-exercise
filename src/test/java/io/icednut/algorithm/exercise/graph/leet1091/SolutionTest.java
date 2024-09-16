@@ -49,4 +49,34 @@ class SolutionTest {
 
         assertEquals(-1, output);
     }
+
+    @Test
+    void test04() {
+        var solution = new Solution();
+
+        int output = solution.shortestPathBinaryMatrix(
+                new int[][]{
+                        new int[]{0, 0, 0},
+                        new int[]{1, 1, 0},
+                        new int[]{1, 1, 1},
+                }
+        );
+
+        assertEquals(-1, output);
+    }
+
+    @Test
+    void test05() {
+        var solution = new Solution();
+
+        int output = solution.shortestPathBinaryMatrix(
+                new int[][]{
+                        new int[]{0, 0, 0},
+                        new int[]{1, 0, 0},
+                        new int[]{1, 1, 0},
+                }
+        );
+
+        assertEquals(3, output);
+    }
 }
