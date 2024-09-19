@@ -2,7 +2,7 @@ package io.icednut.algorithm.exercise.graph.leet1091;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SolutionTest {
 
@@ -78,5 +78,40 @@ class SolutionTest {
         );
 
         assertEquals(3, output);
+    }
+
+    @Test
+    void test06() {
+        var solution = new LeetSolution();
+
+        int output = solution.shortestPathBinaryMatrix(
+                new int[][]{
+                        new int[]{0, 1, 0, 0, 0, 0},
+                        new int[]{0, 1, 0, 1, 1, 0},
+                        new int[]{0, 1, 1, 0, 1, 0},
+                        new int[]{0, 0, 0, 0, 1, 0},
+                        new int[]{1, 1, 1, 1, 1, 0},
+                        new int[]{1, 1, 1, 1, 1, 0}
+                }
+        );
+
+        assertEquals(14, output);
+    }
+
+    @Test
+    void test07() {
+        var solution = new LeetSolution();
+
+        int output = solution.shortestPathBinaryMatrix(
+                new int[][]{
+                        new int[]{0, 0, 0, 0, 1},
+                        new int[]{1, 0, 0, 0, 0},
+                        new int[]{0, 1, 0, 1, 0},
+                        new int[]{0, 0, 0, 1, 1},
+                        new int[]{0, 0, 0, 1, 0}
+                }
+        );
+
+        assertEquals(-1, output);
     }
 }
