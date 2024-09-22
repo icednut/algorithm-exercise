@@ -1,9 +1,9 @@
-package io.icednut.algorithm.exercise.etc.leet386;
+package io.icednut.algorithm.exercise.trie.leet386;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class GptSolution {
 
     public List<Integer> lexicalOrder(int n) {
         List<Integer> result = new ArrayList<>();
